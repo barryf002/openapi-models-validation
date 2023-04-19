@@ -1,0 +1,1806 @@
+components:
+  schemas:
+    Account:
+      description: Account
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        billing_information:
+          $ref: '#/components/schemas/BillingInformation'
+        discoverable:
+          default: false
+          description: 'The account will be included for all members of the
+
+            ix in the list of accounts.
+
+
+            Only `id`, `name` and `present_in_metro_area_networks`
+
+            are provided to other members.'
+          type: boolean
+        external_ref:
+          description: 'Reference field, free to use for the API user.
+
+            *(Sensitive Property)*'
+          example: IX:Service:23042
+          maxLength: 80
+          nullable: true
+          type: string
+        id:
+          maxLength: 80
+          type: string
+        legal_name:
+          description: 'Legal name of the organisation.
+
+            Only required when it''s different from the account name.
+
+            *(Sensitive Property)*
+
+            '
+          example: Moon Network Services LLS.
+          maxLength: 80
+          nullable: true
+          type: string
+        managing_account:
+          description: 'The `id` of a managing account. Can be used for creating
+
+            a customer hierachy. *(Sensitive Property)*
+
+            '
+          example: IX:Account:231
+          nullable: true
+          type: string
+        metro_area_network_presence:
+          description: 'Informal list of `MetroAreaNetwork` ids, indicating the
+
+            presence to other accounts.
+
+            The list is maintained by the account and can be empty.
+
+            '
+          example:
+          - '14021'
+          - '12939'
+          items:
+            type: string
+          type: array
+        name:
+          description: 'Name of the account, how it gets represented
+
+            in e.g. a "customers list".
+
+            '
+          example: Moonpeer Inc.
+          maxLength: 80
+          type: string
+        state:
+          enum:
+          - requested
+          - allocated
+          - testing
+          - production
+          - production_change_pending
+          - decommission_requested
+          - decommissioned
+          - archived
+          - error
+          - operator
+          - scheduled
+          - cancelled
+          type: string
+        status:
+          items:
+            $ref: '#/components/schemas/Status'
+          type: array
+      required:
+      - name
+      - metro_area_network_presence
+      - id
+      title: Account
+      type: object
+    AccountPatch:
+      description: Account Update
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        billing_information:
+          $ref: '#/components/schemas/BillingInformation'
+        discoverable:
+          default: false
+          description: 'The account will be included for all members of the
+
+            ix in the list of accounts.
+
+
+            Only `id`, `name` and `present_in_metro_area_networks`
+
+            are provided to other members.'
+          type: boolean
+        external_ref:
+          description: 'Reference field, free to use for the API user.
+
+            *(Sensitive Property)*'
+          example: IX:Service:23042
+          maxLength: 80
+          nullable: true
+          type: string
+        legal_name:
+          description: 'Legal name of the organisation.
+
+            Only required when it''s different from the account name.
+
+            *(Sensitive Property)*
+
+            '
+          example: Moon Network Services LLS.
+          maxLength: 80
+          nullable: true
+          type: string
+        managing_account:
+          description: 'The `id` of a managing account. Can be used for creating
+
+            a customer hierachy. *(Sensitive Property)*
+
+            '
+          example: IX:Account:231
+          nullable: true
+          type: string
+        metro_area_network_presence:
+          description: 'Informal list of `MetroAreaNetwork` ids, indicating the
+
+            presence to other accounts.
+
+            The list is maintained by the account and can be empty.
+
+            '
+          example:
+          - '14021'
+          - '12939'
+          items:
+            type: string
+          type: array
+        name:
+          description: 'Name of the account, how it gets represented
+
+            in e.g. a "customers list".
+
+            '
+          example: Moonpeer Inc.
+          maxLength: 80
+          type: string
+      title: AccountPatch
+      type: object
+    AccountRequest:
+      description: Account Request
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        billing_information:
+          $ref: '#/components/schemas/BillingInformation'
+        discoverable:
+          default: false
+          description: 'The account will be included for all members of the
+
+            ix in the list of accounts.
+
+
+            Only `id`, `name` and `present_in_metro_area_networks`
+
+            are provided to other members.'
+          type: boolean
+        external_ref:
+          description: 'Reference field, free to use for the API user.
+
+            *(Sensitive Property)*'
+          example: IX:Service:23042
+          maxLength: 80
+          nullable: true
+          type: string
+        legal_name:
+          description: 'Legal name of the organisation.
+
+            Only required when it''s different from the account name.
+
+            *(Sensitive Property)*
+
+            '
+          example: Moon Network Services LLS.
+          maxLength: 80
+          nullable: true
+          type: string
+        managing_account:
+          description: 'The `id` of a managing account. Can be used for creating
+
+            a customer hierachy. *(Sensitive Property)*
+
+            '
+          example: IX:Account:231
+          nullable: true
+          type: string
+        metro_area_network_presence:
+          default: []
+          description: 'Informal list of `MetroAreaNetwork` ids, indicating the
+
+            presence to other accounts.
+
+            The list is maintained by the account and can be empty.
+
+            '
+          example:
+          - '14021'
+          - '12939'
+          items:
+            type: string
+          type: array
+        name:
+          description: 'Name of the account, how it gets represented
+
+            in e.g. a "customers list".
+
+            '
+          example: Moonpeer Inc.
+          maxLength: 80
+          type: string
+      required:
+      - name
+      - address
+      title: AccountRequest
+      type: object
+    AccountUpdate:
+      description: Account Update
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        billing_information:
+          $ref: '#/components/schemas/BillingInformation'
+        discoverable:
+          default: false
+          description: 'The account will be included for all members of the
+
+            ix in the list of accounts.
+
+
+            Only `id`, `name` and `present_in_metro_area_networks`
+
+            are provided to other members.'
+          type: boolean
+        external_ref:
+          description: 'Reference field, free to use for the API user.
+
+            *(Sensitive Property)*'
+          example: IX:Service:23042
+          maxLength: 80
+          nullable: true
+          type: string
+        legal_name:
+          description: 'Legal name of the organisation.
+
+            Only required when it''s different from the account name.
+
+            *(Sensitive Property)*
+
+            '
+          example: Moon Network Services LLS.
+          maxLength: 80
+          nullable: true
+          type: string
+        managing_account:
+          description: 'The `id` of a managing account. Can be used for creating
+
+            a customer hierachy. *(Sensitive Property)*
+
+            '
+          example: IX:Account:231
+          nullable: true
+          type: string
+        metro_area_network_presence:
+          description: 'Informal list of `MetroAreaNetwork` ids, indicating the
+
+            presence to other accounts.
+
+            The list is maintained by the account and can be empty.
+
+            '
+          example:
+          - '14021'
+          - '12939'
+          items:
+            type: string
+          type: array
+        name:
+          description: 'Name of the account, how it gets represented
+
+            in e.g. a "customers list".
+
+            '
+          example: Moonpeer Inc.
+          maxLength: 80
+          type: string
+      required:
+      - name
+      - metro_area_network_presence
+      - address
+      title: AccountUpdate
+      type: object
+    Address:
+      description: A postal address. *(Sensitive Property)*
+      properties:
+        country:
+          description: ISO 3166-1 alpha-2 country code, for example DE
+          example: US
+          maxLength: 2
+          type: string
+        locality:
+          description: The locality/city. For example, Mountain View.
+          example: Mountain View
+          maxLength: 40
+          type: string
+        post_office_box_number:
+          description: The post office box number for PO box addresses.
+          example: '2335232'
+          maxLength: 80
+          nullable: true
+          type: string
+        postal_code:
+          description: A postal code. For example, 9404
+          example: '9409'
+          maxLength: 24
+          type: string
+        region:
+          description: The region. For example, CA
+          example: CA
+          maxLength: 80
+          nullable: true
+          type: string
+        street_address:
+          description: The street address. For example, 1600 Amphitheatre Pkwy.
+          example: 1600 Amphitheatre Pkwy.
+          maxLength: 80
+          type: string
+      required:
+      - country
+      - locality
+      - postal_code
+      - street_address
+      title: Address
+      type: object
+    BillingInformation:
+      description: 'Optional information required for issuing invoices.
+
+        Only accounts with `billing_information` present can be used
+
+        as a `billing_account`. *(Sensitive Property)*'
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        name:
+          description: 'Name of the organisation receiving invoices.
+
+            '
+          example: Moonoc Network Services LLS.
+          maxLength: 80
+          type: string
+        vat_number:
+          description: 'Value-added tax number, required for
+
+            european reverse charge system.
+
+            '
+          example: UK2300000042
+          maxLength: 20
+          minLength: 2
+          nullable: true
+          type: string
+      required:
+      - name
+      - address
+      title: BillingInformation
+      type: object
+    CancellationPolicy:
+      description: Cancellation Policy
+      properties:
+        charged_until:
+          description: "Your obligation to pay for the service will end on this date.\n\
+            Typically `\u2265 decommission_at`."
+          format: date
+          type: string
+        decommission_at:
+          description: 'This field denotes the first possible cancellation
+
+            date of the service.'
+          format: date
+          type: string
+      required:
+      - decommission_at
+      - charged_until
+      title: CancellationPolicy
+      type: object
+    CancellationRequest:
+      description: Service Cancellation Request
+      properties:
+        decommission_at:
+          description: 'An optional date for scheduling the cancellation
+
+            and service decommissioning.'
+          format: date
+          type: string
+      title: CancellationRequest
+      type: object
+    CloudNetworkService:
+      allOf:
+      - $ref: '#/components/schemas/NetworkService'
+      description: Cloud Network Service
+      properties:
+        billing_account:
+          description: 'An account requires billing_information to be used as a `billing_account`.
+
+            *(Sensitive Property)*'
+          type: string
+        capacity:
+          description: 'The capacity of the service in Mbps. When null,
+
+            the maximum capacity will be used.'
+          minimum: 1
+          nullable: true
+          type: integer
+        charged_until:
+          description: "The service continues incurring charges until this date.\n\
+            Typically `\u2265 decommission_at`.\n\nThis field is only used when\n\
+            the state is `DECOMMISSION_REQUESTED` or\n`DECOMMISSIONED`.\n\n*(Sensitive\
+            \ Property)*"
+          format: date
+          type: string
+        cloud_key:
+          description: 'The cloud key is used to specify to which user or
+
+            existing circuit of a cloud provider this `network-service`
+
+            should be provisioned.
+
+
+            For example, for a provider like *AWS*, this would be the
+
+            *account number* (Example: `123456789876`), or for a provider
+
+            like Azure, this would be the service key
+
+            (Example: `acl9edcf-f11c-4681-9c7b-6d16b2973997`)'
+          type: string
+        consuming_account:
+          description: 'The `id` of the account consuming a service.
+
+
+            Used to be `owning_customer`.
+
+            '
+          example: '2381982'
+          type: string
+        contract_ref:
+          description: 'A reference to a contract. If no specific contract is used,
+
+            a default MAY be chosen by the implementer.
+
+            *(Sensitive Property)*
+
+            '
+          example: contract:31824
+          maxLength: 128
+          nullable: true
+          type: string
+        current_billing_start_date:
+          description: 'Your obligation to pay for the service will start on this
+            date.
+
+
+            However, this date may change after an upgrade and not reflect
+
+            the inital start date of the service.
+
+
+            *(Sensitive Property)*'
+          format: date
+          type: string
+        decommission_at:
+          description: 'The service will be decommissioned on this date.
+
+
+            This field is only used when
+
+            the state is `DECOMMISSION_REQUESTED` or
+
+            `DECOMMISSIONED`.'
+          format: date
+          type: string
+        diversity:
+          description: 'Same value as the corresponding `ProductOffering`.
+
+
+            The service can be delivered over multiple handovers from
+
+            the exchange to the `service_provider`.
+
+
+            The `diversity` denotes the number of handovers between the
+
+            exchange and the service provider. A value of two signals a
+
+            redundant service.
+
+
+            Only one network service configuration for each `handover` and
+
+            `cloud_vlan` can be created.'
+          minimum: 1
+          type: integer
+        external_ref:
+          description: 'Reference field, free to use for the API user.
+
+            *(Sensitive Property)*
+
+            '
+          example: IX:Service:23042
+          maxLength: 128
+          nullable: true
+          type: string
+        id:
+          type: string
+        managing_account:
+          description: 'The `id` of the account responsible for managing the service
+            via
+
+            the API. A manager can read and update the state of entities.
+
+            '
+          example: '238189294'
+          type: string
+        nsc_required_contact_roles:
+          description: 'The configuration will require at least one of each of the
+
+            specified roles assigned to contacts.
+
+
+            The `RoleAssignment` is associated through the
+
+            `role_assignments` list property of the network service configuration.'
+          items:
+            type: string
+          readOnly: true
+          type: array
+        provider_ref:
+          description: 'For a cloud network service with the exchange first
+
+            workflow, the `provider_ref` will be a reference
+
+            to a resource of the cloud provider. (E.g. the UUID of
+
+            a virtual circuit.)
+
+
+            The `provider_ref` is managed by the exchange and its
+
+            meaning may vary between different cloud services.
+
+            '
+          example: 331050d5-76fb-498b-b72a-248520278fbd
+          nullable: true
+          type: string
+        purchase_order:
+          default: ''
+          description: 'Purchase Order ID which will be displayed on the invoice.
+
+            *(Sensitive Property)*
+
+            '
+          example: 'Project: DC Moon'
+          maxLength: 80
+          type: string
+        state:
+          enum:
+          - requested
+          - allocated
+          - testing
+          - production
+          - production_change_pending
+          - decommission_requested
+          - decommissioned
+          - archived
+          - error
+          - operator
+          - scheduled
+          - cancelled
+          type: string
+        status:
+          items:
+            $ref: '#/components/schemas/Status'
+          type: array
+      required:
+      - state
+      - id
+      - managing_account
+      - consuming_account
+      - billing_account
+      - diversity
+      - provider_ref
+      - cloud_key
+      title: CloudNetworkService
+      type: object
+    CloudNetworkServiceRequest:
+      allOf:
+      - $ref: '#/components/schemas/NetworkServiceRequest'
+      description: Cloud Network Service Request
+      properties:
+        billing_account:
+          description: 'An account requires billing_information to be used as a `billing_account`.
+
+            *(Sensitive Property)*'
+          type: string
+        capacity:
+          description: 'The capacity of the service in Mbps. When null,
+
+            the maximum capacity will be used.'
+          minimum: 1
+          nullable: true
+          type: integer
+        cloud_key:
+          description: 'The cloud key is used to specify to which user or
+
+            existing circuit of a cloud provider this `network-service`
+
+            should be provisioned.
+
+
+            For example, for a provider like *AWS*, this would be the
+
+            *account number* (Example: `123456789876`), or for a provider
+
+            like Azure, this would be the service key
+
+            (Example: `acl9edcf-f11c-4681-9c7b-6d16b2973997`)'
+          type: string
+        consuming_account:
+          description: 'The `id` of the account consuming a service.
+
+
+            Used to be `owning_customer`.
+
+            '
+          example: '2381982'
+          type: string
+        contract_ref:
+          description: 'A reference to a contract. If no specific contract is used,
+
+            a default MAY be chosen by the implementer.
+
+            *(Sensitive Property)*
+
+            '
+          example: contract:31824
+          maxLength: 128
+          nullable: true
+          type: string
+        external_ref:
+          description: 'Reference field, free to use for the API user.
+
+            *(Sensitive Property)*
+
+            '
+          example: IX:Service:23042
+          maxLength: 128
+          nullable: true
+          type: string
+        managing_account:
+          description: 'The `id` of the account responsible for managing the service
+            via
+
+            the API. A manager can read and update the state of entities.
+
+            '
+          example: '238189294'
+          type: string
+        purchase_order:
+          default: ''
+          description: 'Purchase Order ID which will be displayed on the invoice.
+
+            *(Sensitive Property)*
+
+            '
+          example: 'Project: DC Moon'
+          maxLength: 80
+          type: string
+      required:
+      - managing_account
+      - consuming_account
+      - billing_account
+      - cloud_key
+      title: CloudNetworkServiceRequest
+      type: object
+    Conflict:
+      description: A conflict is preventing success
+      properties:
+        remote_resource_id:
+          description: 'The id of the conflicting resource. This is in most
+
+            cases the id of the current resource.
+
+            '
+          example: C:523589
+          type: string
+        remote_resource_type:
+          description: 'The type of the conflicting resource.
+
+            '
+          enum:
+          - accounts
+          - connections
+          - contacts
+          - devices
+          - facilities
+          - ips
+          - macs
+          - member-joining-rules
+          - metro-area-network
+          - network-feature-configs
+          - network-features
+          - network-service-configs
+          - network-services
+          - pops
+          - port-reservations
+          - ports
+          - product-offerings
+          - role-assignments
+          - roles
+          example: contacts
+          type: string
+        resource_id:
+          description: 'The id of the resource which has a conflict with the
+
+            request operation on the current resource.
+
+            '
+          example: RA:2819238
+          type: string
+        resource_property:
+          description: 'Indicates the property where the resource is in use.
+
+            '
+          example: contact
+          nullable: true
+          type: string
+        resource_type:
+          description: 'The resource type refers to an ix-api resource.
+
+            '
+          enum:
+          - accounts
+          - connections
+          - contacts
+          - devices
+          - facilities
+          - ips
+          - macs
+          - member-joining-rules
+          - metro-area-network
+          - network-feature-configs
+          - network-features
+          - network-service-configs
+          - network-services
+          - pops
+          - port-reservations
+          - ports
+          - product-offerings
+          - role-assignments
+          - roles
+          example: role-assignments
+          type: string
+      required:
+      - resource_type
+      - resource_id
+      - resource_property
+      - remote_resource_type
+      - remote_resource_id
+      title: Conflict
+      type: object
+    Contact:
+      description: Contact
+      properties:
+        consuming_account:
+          description: 'The `id` of the account consuming a service.
+
+
+            Used to be `owning_customer`.
+
+            '
+          example: '2381982'
+          type: string
+        email:
+          description: 'The email of the legal company entity.
+
+            '
+          example: info@moon-peer.net
+          maxLength: 80
+          nullable: true
+          type: string
+        external_ref:
+          description: 'Reference field, free to use for the API user.
+
+            *(Sensitive Property)*
+
+            '
+          example: IX:Service:23042
+          maxLength: 128
+          nullable: true
+          type: string
+        id:
+          type: string
+        managing_account:
+          description: 'The `id` of the account responsible for managing the service
+            via
+
+            the API. A manager can read and update the state of entities.
+
+            '
+          example: '238189294'
+          type: string
+        name:
+          description: A name of a person or an organisation
+          example: Some A. Name
+          maxLength: 128
+          nullable: true
+          type: string
+        telephone:
+          description: The telephone number in E.164 Phone Number Formatting
+          example: '+442071838750'
+          maxLength: 40
+          nullable: true
+          type: string
+      required:
+      - managing_account
+      - consuming_account
+      - id
+      title: Contact
+      type: object
+    ContactPatch:
+      description: Contact Update
+      properties:
+        consuming_account:
+          description: 'The `id` of the account consuming a service.
+
+
+            Used to be `owning_customer`.
+
+            '
+          example: '2381982'
+          type: string
+        email:
+          description: 'The email of the legal company entity.
+
+            '
+          example: info@moon-peer.net
+          maxLength: 80
+          nullable: true
+          type: string
+        external_ref:
+          description: 'Reference field, free to use for the API user.
+
+            *(Sensitive Property)*
+
+            '
+          example: IX:Service:23042
+          maxLength: 128
+          nullable: true
+          type: string
+        managing_account:
+          description: 'The `id` of the account responsible for managing the service
+            via
+
+            the API. A manager can read and update the state of entities.
+
+            '
+          example: '238189294'
+          type: string
+        name:
+          description: A name of a person or an organisation
+          example: Some A. Name
+          maxLength: 128
+          nullable: true
+          type: string
+        telephone:
+          description: The telephone number in E.164 Phone Number Formatting
+          example: '+442071838750'
+          maxLength: 40
+          nullable: true
+          type: string
+      title: ContactPatch
+      type: object
+    ContactRequest:
+      description: Contact Create Request
+      properties:
+        consuming_account:
+          description: 'The `id` of the account consuming a service.
+
+
+            Used to be `owning_customer`.
+
+            '
+          example: '2381982'
+          type: string
+        email:
+          description: 'The email of the legal company entity.
+
+            '
+          example: info@moon-peer.net
+          maxLength: 80
+          nullable: true
+          type: string
+        external_ref:
+          description: 'Reference field, free to use for the API user.
+
+            *(Sensitive Property)*
+
+            '
+          example: IX:Service:23042
+          maxLength: 128
+          nullable: true
+          type: string
+        managing_account:
+          description: 'The `id` of the account responsible for managing the service
+            via
+
+            the API. A manager can read and update the state of entities.
+
+            '
+          example: '238189294'
+          type: string
+        name:
+          description: A name of a person or an organisation
+          example: Some A. Name
+          maxLength: 128
+          nullable: true
+          type: string
+        telephone:
+          description: The telephone number in E.164 Phone Number Formatting
+          example: '+442071838750'
+          maxLength: 40
+          nullable: true
+          type: string
+      required:
+      - managing_account
+      - consuming_account
+      title: ContactRequest
+      type: object
+    ContactUpdate:
+      description: Contact Update
+      properties:
+        consuming_account:
+          description: 'The `id` of the account consuming a service.
+
+
+            Used to be `owning_customer`.
+
+            '
+          example: '2381982'
+          type: string
+        email:
+          description: 'The email of the legal company entity.
+
+            '
+          example: info@moon-peer.net
+          maxLength: 80
+          nullable: true
+          type: string
+        external_ref:
+          description: 'Reference field, free to use for the API user.
+
+            *(Sensitive Property)*
+
+            '
+          example: IX:Service:23042
+          maxLength: 128
+          nullable: true
+          type: string
+        managing_account:
+          description: 'The `id` of the account responsible for managing the service
+            via
+
+            the API. A manager can read and update the state of entities.
+
+            '
+          example: '238189294'
+          type: string
+        name:
+          description: A name of a person or an organisation
+          example: Some A. Name
+          maxLength: 128
+          nullable: true
+          type: string
+        telephone:
+          description: The telephone number in E.164 Phone Number Formatting
+          example: '+442071838750'
+          maxLength: 40
+          nullable: true
+          type: string
+      required:
+      - managing_account
+      - consuming_account
+      title: ContactUpdate
+      type: object
+    Event:
+      description: Event
+      properties:
+        account:
+          readOnly: true
+          type: string
+        payload:
+          type: object
+        serial:
+          type: integer
+        timestamp:
+          format: date-time
+          type: string
+        type:
+          type: string
+      required:
+      - serial
+      - type
+      - payload
+      - timestamp
+      title: Event
+      type: object
+    IXPSpecificFeatureFlag:
+      description: IXP-Specific Feature Flag
+      properties:
+        description:
+          description: 'The description of the feature flag.
+
+            '
+          example: RPKI reject invalid filtering is available
+          maxLength: 80
+          type: string
+        mandatory:
+          description: 'This feature will always be enabled, even if not provided
+            in
+
+            the corresponding config''s list of `flags`.
+
+            '
+          type: boolean
+        name:
+          description: 'The name of the feature flag.
+
+            '
+          example: RPKI-HARD-FILTER
+          maxLength: 40
+          type: string
+      required:
+      - name
+      - description
+      - mandatory
+      title: IXPSpecificFeatureFlag
+      type: object
+    NetworkService:
+      description: Polymorphic Network Services
+      properties:
+        type:
+          type: string
+      discriminator:
+        mapping:
+          cloud_vc: '#/components/schemas/CloudNetworkService'
+          p2p_vc: '#/components/schemas/P2PNetworkService'
+        propertyName: type
+      title: NetworkService
+      type: object
+    NetworkServiceRequest:
+      description: Polymorphic Network Service Request
+      properties:
+        type:
+          type: string
+      discriminator:
+        mapping:
+          cloud_vc: '#/components/schemas/CloudNetworkServiceRequest'
+          p2p_vc: '#/components/schemas/P2PNetworkServiceRequest'
+        propertyName: type
+      title: NetworkServiceRequest
+      type: object
+    P2PNetworkService:
+      allOf:
+      - $ref: '#/components/schemas/NetworkService'
+      description: P2P Network Service
+      properties:
+        billing_account:
+          description: 'An account requires billing_information to be used as a `billing_account`.
+
+            *(Sensitive Property)*'
+          type: string
+        capacity:
+          description: 'The capacity of the service in Mbps. When null,
+
+            the maximum capacity will be used.'
+          minimum: 1
+          nullable: true
+          type: integer
+        charged_until:
+          description: "The service continues incurring charges until this date.\n\
+            Typically `\u2265 decommission_at`.\n\nThis field is only used when\n\
+            the state is `DECOMMISSION_REQUESTED` or\n`DECOMMISSIONED`.\n\n*(Sensitive\
+            \ Property)*"
+          format: date
+          type: string
+        consuming_account:
+          description: 'The `id` of the account consuming a service.
+
+
+            Used to be `owning_customer`.
+
+            '
+          example: '2381982'
+          type: string
+        contract_ref:
+          description: 'A reference to a contract. If no specific contract is used,
+
+            a default MAY be chosen by the implementer.
+
+            *(Sensitive Property)*
+
+            '
+          example: contract:31824
+          maxLength: 128
+          nullable: true
+          type: string
+        current_billing_start_date:
+          description: 'Your obligation to pay for the service will start on this
+            date.
+
+
+            However, this date may change after an upgrade and not reflect
+
+            the inital start date of the service.
+
+
+            *(Sensitive Property)*'
+          format: date
+          type: string
+        decommission_at:
+          description: 'The service will be decommissioned on this date.
+
+
+            This field is only used when
+
+            the state is `DECOMMISSION_REQUESTED` or
+
+            `DECOMMISSIONED`.'
+          format: date
+          type: string
+        display_name:
+          description: 'Name of the point to point virtual circuit.
+
+
+            It is visible to all parties allowed to connect
+
+            to this virtual circuit.
+
+
+            It is intended for humans to make sense of.
+
+            '
+          example: E-Line Customer
+          type: string
+        external_ref:
+          description: 'Reference field, free to use for the API user.
+
+            *(Sensitive Property)*
+
+            '
+          example: IX:Service:23042
+          maxLength: 128
+          nullable: true
+          type: string
+        id:
+          type: string
+        managing_account:
+          description: 'The `id` of the account responsible for managing the service
+            via
+
+            the API. A manager can read and update the state of entities.
+
+            '
+          example: '238189294'
+          type: string
+        nsc_required_contact_roles:
+          description: 'The configuration will require at least one of each of the
+
+            specified roles assigned to contacts.
+
+
+            The `RoleAssignment` is associated through the
+
+            `role_assignments` list property of the network service configuration.'
+          items:
+            type: string
+          readOnly: true
+          type: array
+        purchase_order:
+          default: ''
+          description: 'Purchase Order ID which will be displayed on the invoice.
+
+            *(Sensitive Property)*
+
+            '
+          example: 'Project: DC Moon'
+          maxLength: 80
+          type: string
+        state:
+          enum:
+          - requested
+          - allocated
+          - testing
+          - production
+          - production_change_pending
+          - decommission_requested
+          - decommissioned
+          - archived
+          - error
+          - operator
+          - scheduled
+          - cancelled
+          type: string
+        status:
+          items:
+            $ref: '#/components/schemas/Status'
+          type: array
+      required:
+      - state
+      - id
+      - managing_account
+      - consuming_account
+      - billing_account
+      title: P2PNetworkService
+      type: object
+    P2PNetworkServiceRequest:
+      allOf:
+      - $ref: '#/components/schemas/NetworkServiceRequest'
+      description: P2P Network Service Request
+      properties:
+        billing_account:
+          description: 'An account requires billing_information to be used as a `billing_account`.
+
+            *(Sensitive Property)*'
+          type: string
+        consuming_account:
+          description: 'The `id` of the account consuming a service.
+
+
+            Used to be `owning_customer`.
+
+            '
+          example: '2381982'
+          type: string
+        contract_ref:
+          description: 'A reference to a contract. If no specific contract is used,
+
+            a default MAY be chosen by the implementer.
+
+            *(Sensitive Property)*
+
+            '
+          example: contract:31824
+          maxLength: 128
+          nullable: true
+          type: string
+        display_name:
+          description: 'Name of the point to point virtual circuit.
+
+
+            It is visible to all parties allowed to connect
+
+            to this virtual circuit.
+
+
+            It is intended for humans to make sense of.
+
+            '
+          example: E-Line Customer
+          type: string
+        external_ref:
+          description: 'Reference field, free to use for the API user.
+
+            *(Sensitive Property)*
+
+            '
+          example: IX:Service:23042
+          maxLength: 128
+          nullable: true
+          type: string
+        managing_account:
+          description: 'The `id` of the account responsible for managing the service
+            via
+
+            the API. A manager can read and update the state of entities.
+
+            '
+          example: '238189294'
+          type: string
+        purchase_order:
+          default: ''
+          description: 'Purchase Order ID which will be displayed on the invoice.
+
+            *(Sensitive Property)*
+
+            '
+          example: 'Project: DC Moon'
+          maxLength: 80
+          type: string
+      required:
+      - managing_account
+      - consuming_account
+      - billing_account
+      title: P2PNetworkServiceRequest
+      type: object
+    ProblemResponse:
+      description: Encodes a problem into an appropriate response body.
+      properties:
+        detail:
+          description: 'A human-readable explanation specific to this
+
+            occurrence of the problem.'
+          type: string
+        instance:
+          description: 'A URI reference that identifies the specific
+
+            occurrence of the problem.  It may or may not yield
+
+            further information if dereferenced.'
+          type: string
+        status:
+          description: 'The HTTP status code ([RFC7231], Section 6)
+
+            generated by the origin server for this occurrence
+
+            of the problem.'
+          minimum: 100
+          type: integer
+        title:
+          description: 'A short, human-readable summary of the problem type.
+
+
+            It SHOULD NOT change from occurrence to
+
+            occurrence of the problem, except for purposes
+
+            of localization (e.g., using proactive content
+
+            negotiation; see [RFC7231], Section 3.4).
+
+            '
+          example: Some fields have validation errors.
+          type: string
+        type:
+          description: 'A URI reference (see RFC3986) that identifies the
+
+            problem type.
+
+
+            This specification encourages that, when
+
+            dereferenced, it provide human-readable documentation
+
+            for the problem type (e.g., using HTML
+
+            [W3C.REC-html5-20141028]).
+
+
+            When this member is not present, its value is assumed
+
+            to be "about:blank".
+
+            '
+          example: about:blank
+          type: string
+      required:
+      - type
+      title: ProblemResponse
+      type: object
+    Role:
+      description: Role for a Contact
+      properties:
+        id:
+          type: string
+        name:
+          description: 'The name of the role.
+
+            '
+          example: noc
+          maxLength: 80
+          type: string
+        required_fields:
+          description: 'A list of required field names.
+
+            '
+          example:
+          - name
+          - email
+          items:
+            maxLength: 80
+            type: string
+          type: array
+      required:
+      - name
+      - required_fields
+      - id
+      title: Role
+      type: object
+    RoleAssignment:
+      description: A role assignment for a contact
+      properties:
+        contact:
+          description: 'The `id` of a contact the role is assigned to.
+
+            '
+          example: contact:42b
+          type: string
+        id:
+          type: string
+        role:
+          description: 'The `id` of a role the contact is assigned to.
+
+            '
+          example: role:23
+          type: string
+      required:
+      - role
+      - contact
+      - id
+      title: RoleAssignment
+      type: object
+    RoleAssignmentPatch:
+      description: A role assignment update
+      properties:
+        contact:
+          description: 'The `id` of a contact the role is assigned to.
+
+            '
+          example: contact:42b
+          type: string
+        role:
+          description: 'The `id` of a role the contact is assigned to.
+
+            '
+          example: role:23
+          type: string
+      title: RoleAssignmentPatch
+      type: object
+    RoleAssignmentRequest:
+      description: A role assignment request
+      properties:
+        contact:
+          description: 'The `id` of a contact the role is assigned to.
+
+            '
+          example: contact:42b
+          type: string
+        role:
+          description: 'The `id` of a role the contact is assigned to.
+
+            '
+          example: role:23
+          type: string
+      required:
+      - role
+      - contact
+      title: RoleAssignmentRequest
+      type: object
+    RoleAssignmentUpdate:
+      description: A role assignemnt update
+      properties:
+        contact:
+          description: 'The `id` of a contact the role is assigned to.
+
+            '
+          example: contact:42b
+          type: string
+        role:
+          description: 'The `id` of a role the contact is assigned to.
+
+            '
+          example: role:23
+          type: string
+      required:
+      - role
+      - contact
+      title: RoleAssignmentUpdate
+      type: object
+    RolePatch:
+      description: Role Update
+      properties:
+        name:
+          description: 'The name of the role.
+
+            '
+          example: noc
+          maxLength: 80
+          type: string
+        required_fields:
+          description: 'A list of required field names.
+
+            '
+          example:
+          - name
+          - email
+          items:
+            maxLength: 80
+            type: string
+          type: array
+      title: RolePatch
+      type: object
+    RoleRequest:
+      description: Create Role
+      properties:
+        name:
+          description: 'The name of the role.
+
+            '
+          example: noc
+          maxLength: 80
+          type: string
+        required_fields:
+          description: 'A list of required field names.
+
+            '
+          example:
+          - name
+          - email
+          items:
+            maxLength: 80
+            type: string
+          type: array
+      required:
+      - name
+      - required_fields
+      title: RoleRequest
+      type: object
+    RoleUpdate:
+      description: Role Update
+      properties:
+        name:
+          description: 'The name of the role.
+
+            '
+          example: noc
+          maxLength: 80
+          type: string
+        required_fields:
+          description: 'A list of required field names.
+
+            '
+          example:
+          - name
+          - email
+          items:
+            maxLength: 80
+            type: string
+          type: array
+      required:
+      - name
+      - required_fields
+      title: RoleUpdate
+      type: object
+    Status:
+      description: Status Message
+      properties:
+        attrs:
+          description: 'Optional machine readable key value pairs
+
+            supplementing the message.
+
+
+            A custom, detailed or localized error messagen can
+
+            be presented to the user, derived from the `tag` and `attrs`.
+
+            '
+          example:
+            mac: 02:42:23:42:a0:bc
+          type: object
+        message:
+          description: 'A human readable message, describing the problem
+
+            and may contain hints for resolution.
+
+            '
+          example: The peer sent an ARP reply for an IP addresses that has not been
+            assigned to them.
+          type: string
+        severity:
+          description: 'We are using syslog severity levels: 0 = Emergency,
+
+            1 = Alert, 2 = Critical, 3 = Error, 4 = Warning,
+
+            5 = Notice, 6 = Informational, 7 = Debug.
+
+            '
+          example: 2
+          format: int32
+          maximum: 7
+          minimum: 0
+          type: integer
+        tag:
+          description: 'A machine readable message identifier.
+
+            '
+          example: proxy_arp_detected
+          type: string
+        timestamp:
+          description: The time and date when the event occured.
+          format: date-time
+          type: string
+      required:
+      - severity
+      - tag
+      - message
+      - timestamp
+      title: Status
+      type: object
+    ValidationErrorProperty:
+      description: A failed validation
+      properties:
+        name:
+          type: string
+        reason:
+          type: string
+      required:
+      - name
+      - reason
+      title: ValidationErrorProperty
+      type: object
+  securitySchemes:
+    Bearer:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
+    OAuth:
+      description: '
+
+        This API uses OAuth 2.
+
+        We suggest to use the scope: `ix-api` but
+
+        it is up to the implementers to decide the details.
+
+        This includes what flows to support.
+
+        '
+      flows:
+        authorizationCode:
+          authorizationUrl: https://auth.example-ix/see-implementation-guide
+          scopes:
+            ix-api: access the IX-API
+          tokenUrl: https://auth.example-ix/see-implementation-guide
+        clientCredentials:
+          scopes:
+            ix-api: access the IX-API
+          tokenUrl: https://auth.example-ix/see-implementation-guide
+        implicit:
+          authorizationUrl: https://auth.example-ix/see-implementation-guide
+          scopes:
+            ix-api: access the IX-API
+        password:
+          scopes:
+            ix-api: access the IX-API
+          tokenUrl: https://auth.example-ix/see-implementation-guide
+      type: oauth2
+info:
+  contact:
+    url: https://ix-api.net
+  description: '
+
+    This API allows to configure/change/delete Internet Exchange services.
+
+
+    # Filters
+
+    When querying collections, the provided query parameters
+
+    are validated. Unknown query parameters are ignored.
+
+    Providing invalid filter values should yield a validation error.
+
+
+    # State
+
+    A lot of resources are stateful, indicated by the presence of
+
+    a `state` property, to support the
+
+    inherently asynchronous nature of provisioning, deployment and
+
+    on-boarding processes.
+
+
+    The following table describes the meaning of each state:
+
+
+    | State | Meaning |
+
+    | ------ | ------ |
+
+    | requested | Resource has been requested by the customer but not yet fully reserved
+    (sub-resources required) |
+
+    | allocated | All resources required for service are reserved |
+
+    | testing | The resource is provisioned and is currently being tested |
+
+    | production | The resource is active and can be used by the customer |
+
+    | production_change_pending | The resource is active but the customer has requested
+    a change that is awaiting completion |
+
+    | decommission_requested | The resource is active but the customer has requested
+    disconnection that is awaiting completion |
+
+    | decommissioned | The resource has been de-provisioned and billing is terminated
+    or scheduled for termination |
+
+    | archived | The resource was "deleted/purged" and is not listed unless explicitly
+    requested in the filter (i.e. `?state=archived`). |
+
+    | error | The resource has experienced error during provisioning or after is has
+    been activated |
+
+    | cancelled | The request for a service was cancelled before provisioning was
+    completed |
+
+    | operator | Human intervention is needed |
+
+    | scheduled | The service has been scheduled for provisioning |
+
+
+    Please note, that not all implementers _HAVE_ to implement
+
+    all the listed states.
+
+
+    *Sidenote:* If the deleted operation is applied to an object in
+
+    state `decommissioned` the object will move to state archived.
+
+
+    # Sensitive Properties
+
+
+    Some properties contain sensitive information and should be redacted when
+
+    the resource is made available users outside the authorized scope.
+
+
+    This is for example the case when an `Account` is flagged as `discoverable`,
+
+    it becomes available to other API users. In this case only: `id`, `name`
+
+    and `metro_area_network_presence` should be exposed.
+
+
+    If a property is `required` and needs to be redacted, a zero value
+
+    should be used. For strings this would be an empty string `""`,
+
+    for numeric values `0` and booleans `false`.
+
+
+    Shared resources with sensitive properties: `Account`, `NetworkService`
+
+    '
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  title: IX-API
+  version: 2.4.2
+openapi: 3.0.0
+paths: {}
+security:
+- OAuth:
+  - ix-api
+- Bearer: []
+servers:
+- url: /api/v2
+tags: []
+
